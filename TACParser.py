@@ -12,29 +12,31 @@ else:
 def serializedATN():
     with StringIO() as buf:
         buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\24")
-        buf.write("J\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b")
-        buf.write("\t\b\4\t\t\t\4\n\t\n\4\13\t\13\3\2\6\2\30\n\2\r\2\16\2")
-        buf.write("\31\3\3\3\3\3\3\3\4\3\4\7\4!\n\4\f\4\16\4$\13\4\3\4\3")
-        buf.write("\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\5\5")
-        buf.write("\64\n\5\3\6\3\6\3\6\3\7\3\7\3\b\3\b\3\b\3\b\3\b\5\b@\n")
-        buf.write("\b\3\t\3\t\3\n\3\n\3\13\3\13\5\13H\n\13\3\13\2\2\f\2\4")
-        buf.write("\6\b\n\f\16\20\22\24\2\4\3\2\t\13\3\2\f\21\2F\2\27\3\2")
-        buf.write("\2\2\4\33\3\2\2\2\6\"\3\2\2\2\b\63\3\2\2\2\n\65\3\2\2")
-        buf.write("\2\f8\3\2\2\2\16?\3\2\2\2\20A\3\2\2\2\22C\3\2\2\2\24G")
-        buf.write("\3\2\2\2\26\30\5\4\3\2\27\26\3\2\2\2\30\31\3\2\2\2\31")
-        buf.write("\27\3\2\2\2\31\32\3\2\2\2\32\3\3\2\2\2\33\34\5\6\4\2\34")
-        buf.write("\35\7\3\2\2\35\5\3\2\2\2\36\37\7\22\2\2\37!\7\4\2\2 \36")
-        buf.write("\3\2\2\2!$\3\2\2\2\" \3\2\2\2\"#\3\2\2\2#%\3\2\2\2$\"")
-        buf.write("\3\2\2\2%&\5\b\5\2&\7\3\2\2\2\'\64\7\5\2\2()\5\f\7\2)")
-        buf.write("*\7\6\2\2*+\5\16\b\2+\64\3\2\2\2,-\7\7\2\2-.\5\24\13\2")
-        buf.write("./\5\22\n\2/\60\5\24\13\2\60\61\5\n\6\2\61\64\3\2\2\2")
-        buf.write("\62\64\5\n\6\2\63\'\3\2\2\2\63(\3\2\2\2\63,\3\2\2\2\63")
-        buf.write("\62\3\2\2\2\64\t\3\2\2\2\65\66\7\b\2\2\66\67\5\24\13\2")
-        buf.write("\67\13\3\2\2\289\5\24\13\29\r\3\2\2\2:@\5\24\13\2;<\5")
-        buf.write("\24\13\2<=\5\20\t\2=>\5\24\13\2>@\3\2\2\2?:\3\2\2\2?;")
-        buf.write("\3\2\2\2@\17\3\2\2\2AB\t\2\2\2B\21\3\2\2\2CD\t\3\2\2D")
-        buf.write("\23\3\2\2\2EH\7\22\2\2FH\7\23\2\2GE\3\2\2\2GF\3\2\2\2")
-        buf.write("H\25\3\2\2\2\7\31\"\63?G")
+        buf.write("S\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b")
+        buf.write("\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\3\2\6\2")
+        buf.write("\34\n\2\r\2\16\2\35\3\3\3\3\3\3\3\4\3\4\3\4\7\4&\n\4\f")
+        buf.write("\4\16\4)\13\4\3\4\3\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5")
+        buf.write("\3\5\3\5\5\5\67\n\5\3\6\3\6\3\6\3\7\3\7\3\b\3\b\3\t\3")
+        buf.write("\t\3\t\3\t\3\t\5\tE\n\t\3\n\3\n\3\n\3\n\3\13\3\13\3\f")
+        buf.write("\3\f\3\r\3\r\5\rQ\n\r\3\r\2\2\16\2\4\6\b\n\f\16\20\22")
+        buf.write("\24\26\30\2\4\3\2\t\13\3\2\f\21\2M\2\33\3\2\2\2\4\37\3")
+        buf.write("\2\2\2\6\'\3\2\2\2\b\66\3\2\2\2\n8\3\2\2\2\f;\3\2\2\2")
+        buf.write("\16=\3\2\2\2\20D\3\2\2\2\22F\3\2\2\2\24J\3\2\2\2\26L\3")
+        buf.write("\2\2\2\30P\3\2\2\2\32\34\5\4\3\2\33\32\3\2\2\2\34\35\3")
+        buf.write("\2\2\2\35\33\3\2\2\2\35\36\3\2\2\2\36\3\3\2\2\2\37 \5")
+        buf.write("\6\4\2 !\7\3\2\2!\5\3\2\2\2\"#\5\f\7\2#$\7\4\2\2$&\3\2")
+        buf.write("\2\2%\"\3\2\2\2&)\3\2\2\2\'%\3\2\2\2\'(\3\2\2\2(*\3\2")
+        buf.write("\2\2)\'\3\2\2\2*+\5\b\5\2+\7\3\2\2\2,\67\7\5\2\2-.\5\16")
+        buf.write("\b\2./\7\6\2\2/\60\5\20\t\2\60\67\3\2\2\2\61\62\7\7\2")
+        buf.write("\2\62\63\5\22\n\2\63\64\5\n\6\2\64\67\3\2\2\2\65\67\5")
+        buf.write("\n\6\2\66,\3\2\2\2\66-\3\2\2\2\66\61\3\2\2\2\66\65\3\2")
+        buf.write("\2\2\67\t\3\2\2\289\7\b\2\29:\5\f\7\2:\13\3\2\2\2;<\7")
+        buf.write("\22\2\2<\r\3\2\2\2=>\5\30\r\2>\17\3\2\2\2?E\5\30\r\2@")
+        buf.write("A\5\30\r\2AB\5\24\13\2BC\5\30\r\2CE\3\2\2\2D?\3\2\2\2")
+        buf.write("D@\3\2\2\2E\21\3\2\2\2FG\5\30\r\2GH\5\26\f\2HI\5\30\r")
+        buf.write("\2I\23\3\2\2\2JK\t\2\2\2K\25\3\2\2\2LM\t\3\2\2M\27\3\2")
+        buf.write("\2\2NQ\7\22\2\2OQ\7\23\2\2PN\3\2\2\2PO\3\2\2\2Q\31\3\2")
+        buf.write("\2\2\7\35\'\66DP")
         return buf.getvalue()
 
 
@@ -63,14 +65,17 @@ class TACParser ( Parser ):
     RULE_labeledInstruction = 2
     RULE_instruction = 3
     RULE_jump = 4
-    RULE_lhs = 5
-    RULE_rhs = 6
-    RULE_binoperator = 7
-    RULE_reloperator = 8
-    RULE_address = 9
+    RULE_label = 5
+    RULE_lhs = 6
+    RULE_rhs = 7
+    RULE_relop = 8
+    RULE_binoperator = 9
+    RULE_reloperator = 10
+    RULE_address = 11
 
     ruleNames =  [ "tacFile", "tacLine", "labeledInstruction", "instruction", 
-                   "jump", "lhs", "rhs", "binoperator", "reloperator", "address" ]
+                   "jump", "label", "lhs", "rhs", "relop", "binoperator", 
+                   "reloperator", "address" ]
 
     EOF = Token.EOF
     T__0=1
@@ -141,13 +146,13 @@ class TACParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 21 
+            self.state = 25 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 20
+                self.state = 24
                 self.tacLine()
-                self.state = 23 
+                self.state = 27 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << TACParser.T__2) | (1 << TACParser.T__4) | (1 << TACParser.T__5) | (1 << TACParser.ID) | (1 << TACParser.INT))) != 0)):
@@ -198,9 +203,9 @@ class TACParser ( Parser ):
         self.enterRule(localctx, 2, self.RULE_tacLine)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 25
+            self.state = 29
             self.labeledInstruction()
-            self.state = 26
+            self.state = 30
             self.match(TACParser.T__0)
         except RecognitionException as re:
             localctx.exception = re
@@ -221,11 +226,12 @@ class TACParser ( Parser ):
             return self.getTypedRuleContext(TACParser.InstructionContext,0)
 
 
-        def ID(self, i:int=None):
+        def label(self, i:int=None):
             if i is None:
-                return self.getTokens(TACParser.ID)
+                return self.getTypedRuleContexts(TACParser.LabelContext)
             else:
-                return self.getToken(TACParser.ID, i)
+                return self.getTypedRuleContext(TACParser.LabelContext,i)
+
 
         def getRuleIndex(self):
             return TACParser.RULE_labeledInstruction
@@ -253,20 +259,20 @@ class TACParser ( Parser ):
         self.enterRule(localctx, 4, self.RULE_labeledInstruction)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 32
+            self.state = 37
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,1,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
-                    self.state = 28
-                    self.match(TACParser.ID)
-                    self.state = 29
+                    self.state = 32
+                    self.label()
+                    self.state = 33
                     self.match(TACParser.T__1) 
-                self.state = 34
+                self.state = 39
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,1,self._ctx)
 
-            self.state = 35
+            self.state = 40
             self.instruction()
         except RecognitionException as re:
             localctx.exception = re
@@ -374,14 +380,8 @@ class TACParser ( Parser ):
             super().__init__(parser)
             self.copyFrom(ctx)
 
-        def address(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(TACParser.AddressContext)
-            else:
-                return self.getTypedRuleContext(TACParser.AddressContext,i)
-
-        def reloperator(self):
-            return self.getTypedRuleContext(TACParser.ReloperatorContext,0)
+        def relop(self):
+            return self.getTypedRuleContext(TACParser.RelopContext,0)
 
         def jump(self):
             return self.getTypedRuleContext(TACParser.JumpContext,0)
@@ -408,43 +408,39 @@ class TACParser ( Parser ):
         localctx = TACParser.InstructionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 6, self.RULE_instruction)
         try:
-            self.state = 49
+            self.state = 52
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [TACParser.T__2]:
                 localctx = TACParser.NoOpContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 37
+                self.state = 42
                 self.match(TACParser.T__2)
                 pass
             elif token in [TACParser.ID, TACParser.INT]:
                 localctx = TACParser.AssignmentContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 38
+                self.state = 43
                 self.lhs()
-                self.state = 39
+                self.state = 44
                 self.match(TACParser.T__3)
-                self.state = 40
+                self.state = 45
                 self.rhs()
                 pass
             elif token in [TACParser.T__4]:
                 localctx = TACParser.ConditionalJumpContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
-                self.state = 42
+                self.state = 47
                 self.match(TACParser.T__4)
-                self.state = 43
-                self.address()
-                self.state = 44
-                self.reloperator()
-                self.state = 45
-                self.address()
-                self.state = 46
+                self.state = 48
+                self.relop()
+                self.state = 49
                 self.jump()
                 pass
             elif token in [TACParser.T__5]:
                 localctx = TACParser.UnconditionalJumpContext(self, localctx)
                 self.enterOuterAlt(localctx, 4)
-                self.state = 48
+                self.state = 51
                 self.jump()
                 pass
             else:
@@ -465,8 +461,8 @@ class TACParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def address(self):
-            return self.getTypedRuleContext(TACParser.AddressContext,0)
+        def label(self):
+            return self.getTypedRuleContext(TACParser.LabelContext,0)
 
 
         def getRuleIndex(self):
@@ -495,10 +491,56 @@ class TACParser ( Parser ):
         self.enterRule(localctx, 8, self.RULE_jump)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 51
+            self.state = 54
             self.match(TACParser.T__5)
-            self.state = 52
-            self.address()
+            self.state = 55
+            self.label()
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class LabelContext(ParserRuleContext):
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def ID(self):
+            return self.getToken(TACParser.ID, 0)
+
+        def getRuleIndex(self):
+            return TACParser.RULE_label
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLabel" ):
+                listener.enterLabel(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLabel" ):
+                listener.exitLabel(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLabel" ):
+                return visitor.visitLabel(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def label(self):
+
+        localctx = TACParser.LabelContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 10, self.RULE_label)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 57
+            self.match(TACParser.ID)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -541,10 +583,10 @@ class TACParser ( Parser ):
     def lhs(self):
 
         localctx = TACParser.LhsContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 10, self.RULE_lhs)
+        self.enterRule(localctx, 12, self.RULE_lhs)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 54
+            self.state = 59
             self.address()
         except RecognitionException as re:
             localctx.exception = re
@@ -569,31 +611,6 @@ class TACParser ( Parser ):
         def copyFrom(self, ctx:ParserRuleContext):
             super().copyFrom(ctx)
 
-
-
-    class RhsAddresContext(RhsContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a TACParser.RhsContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def address(self):
-            return self.getTypedRuleContext(TACParser.AddressContext,0)
-
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterRhsAddres" ):
-                listener.enterRhsAddres(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitRhsAddres" ):
-                listener.exitRhsAddres(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitRhsAddres" ):
-                return visitor.visitRhsAddres(self)
-            else:
-                return visitor.visitChildren(self)
 
 
     class RhsBinopContext(RhsContext):
@@ -627,34 +644,117 @@ class TACParser ( Parser ):
                 return visitor.visitChildren(self)
 
 
+    class RhsAddressContext(RhsContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a TACParser.RhsContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def address(self):
+            return self.getTypedRuleContext(TACParser.AddressContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRhsAddress" ):
+                listener.enterRhsAddress(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRhsAddress" ):
+                listener.exitRhsAddress(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitRhsAddress" ):
+                return visitor.visitRhsAddress(self)
+            else:
+                return visitor.visitChildren(self)
+
+
 
     def rhs(self):
 
         localctx = TACParser.RhsContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 12, self.RULE_rhs)
+        self.enterRule(localctx, 14, self.RULE_rhs)
         try:
-            self.state = 61
+            self.state = 66
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,3,self._ctx)
             if la_ == 1:
-                localctx = TACParser.RhsAddresContext(self, localctx)
+                localctx = TACParser.RhsAddressContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 56
+                self.state = 61
                 self.address()
                 pass
 
             elif la_ == 2:
                 localctx = TACParser.RhsBinopContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 57
+                self.state = 62
                 self.address()
-                self.state = 58
+                self.state = 63
                 self.binoperator()
-                self.state = 59
+                self.state = 64
                 self.address()
                 pass
 
 
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class RelopContext(ParserRuleContext):
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def address(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(TACParser.AddressContext)
+            else:
+                return self.getTypedRuleContext(TACParser.AddressContext,i)
+
+
+        def reloperator(self):
+            return self.getTypedRuleContext(TACParser.ReloperatorContext,0)
+
+
+        def getRuleIndex(self):
+            return TACParser.RULE_relop
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRelop" ):
+                listener.enterRelop(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRelop" ):
+                listener.exitRelop(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitRelop" ):
+                return visitor.visitRelop(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def relop(self):
+
+        localctx = TACParser.RelopContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 16, self.RULE_relop)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 68
+            self.address()
+            self.state = 69
+            self.reloperator()
+            self.state = 70
+            self.address()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -694,11 +794,11 @@ class TACParser ( Parser ):
     def binoperator(self):
 
         localctx = TACParser.BinoperatorContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 14, self.RULE_binoperator)
+        self.enterRule(localctx, 18, self.RULE_binoperator)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 63
+            self.state = 72
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << TACParser.T__6) | (1 << TACParser.T__7) | (1 << TACParser.T__8))) != 0)):
                 self._errHandler.recoverInline(self)
@@ -744,11 +844,11 @@ class TACParser ( Parser ):
     def reloperator(self):
 
         localctx = TACParser.ReloperatorContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 16, self.RULE_reloperator)
+        self.enterRule(localctx, 20, self.RULE_reloperator)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 65
+            self.state = 74
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << TACParser.T__9) | (1 << TACParser.T__10) | (1 << TACParser.T__11) | (1 << TACParser.T__12) | (1 << TACParser.T__13) | (1 << TACParser.T__14))) != 0)):
                 self._errHandler.recoverInline(self)
@@ -832,21 +932,21 @@ class TACParser ( Parser ):
     def address(self):
 
         localctx = TACParser.AddressContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 18, self.RULE_address)
+        self.enterRule(localctx, 22, self.RULE_address)
         try:
-            self.state = 69
+            self.state = 78
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [TACParser.ID]:
                 localctx = TACParser.IdentifierContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 67
+                self.state = 76
                 self.match(TACParser.ID)
                 pass
             elif token in [TACParser.INT]:
                 localctx = TACParser.IntegerContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 68
+                self.state = 77
                 self.match(TACParser.INT)
                 pass
             else:

@@ -80,6 +80,15 @@ class TACListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by TACParser#label.
+    def enterLabel(self, ctx:TACParser.LabelContext):
+        pass
+
+    # Exit a parse tree produced by TACParser#label.
+    def exitLabel(self, ctx:TACParser.LabelContext):
+        pass
+
+
     # Enter a parse tree produced by TACParser#lhs.
     def enterLhs(self, ctx:TACParser.LhsContext):
         pass
@@ -89,12 +98,12 @@ class TACListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by TACParser#RhsAddres.
-    def enterRhsAddres(self, ctx:TACParser.RhsAddresContext):
+    # Enter a parse tree produced by TACParser#RhsAddress.
+    def enterRhsAddress(self, ctx:TACParser.RhsAddressContext):
         pass
 
-    # Exit a parse tree produced by TACParser#RhsAddres.
-    def exitRhsAddres(self, ctx:TACParser.RhsAddresContext):
+    # Exit a parse tree produced by TACParser#RhsAddress.
+    def exitRhsAddress(self, ctx:TACParser.RhsAddressContext):
         pass
 
 
@@ -104,6 +113,15 @@ class TACListener(ParseTreeListener):
 
     # Exit a parse tree produced by TACParser#RhsBinop.
     def exitRhsBinop(self, ctx:TACParser.RhsBinopContext):
+        pass
+
+
+    # Enter a parse tree produced by TACParser#relop.
+    def enterRelop(self, ctx:TACParser.RelopContext):
+        pass
+
+    # Exit a parse tree produced by TACParser#relop.
+    def exitRelop(self, ctx:TACParser.RelopContext):
         pass
 
 

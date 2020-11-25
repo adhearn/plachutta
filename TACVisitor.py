@@ -49,18 +49,28 @@ class TACVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by TACParser#label.
+    def visitLabel(self, ctx:TACParser.LabelContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by TACParser#lhs.
     def visitLhs(self, ctx:TACParser.LhsContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by TACParser#RhsAddres.
-    def visitRhsAddres(self, ctx:TACParser.RhsAddresContext):
+    # Visit a parse tree produced by TACParser#RhsAddress.
+    def visitRhsAddress(self, ctx:TACParser.RhsAddressContext):
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by TACParser#RhsBinop.
     def visitRhsBinop(self, ctx:TACParser.RhsBinopContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by TACParser#relop.
+    def visitRelop(self, ctx:TACParser.RelopContext):
         return self.visitChildren(ctx)
 
 

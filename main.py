@@ -2,7 +2,7 @@ import sys
 from antlr4 import *
 from TACLexer import TACLexer
 from TACParser import TACParser
-from interpreter import AnalysisPhase
+from interpreter import AnalysisPhase, Interpreter
 
 
 def main(argv):
@@ -15,11 +15,8 @@ def main(argv):
     walker = ParseTreeWalker()
     analysis = AnalysisPhase()
     walker.walk(analysis, tree)
-    print(analysis.labels)
-    print(analysis.variables)
-    print(analysis.errors)
-    # interpreter = EvalPhase(analysis.instructions)
-    # walker.walk(interpreter, tree)
+    interpreter = Interpreter(analysis.instructions, analysis.labels)
+    interpreter.eval()
 
 
 if __name__ == "__main__":

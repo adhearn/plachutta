@@ -59,7 +59,7 @@ class AnalysisPhase(TACListener):
 
     def generate_undeclared_label_errors(self):
         for name, label in self.labels.items():
-            if not label.declaration_location:
+            if label.declaration_location is None:
                 error_str = f"Label used but not defined: {label.name}"
                 self.errors.append(error_str)
 
@@ -68,13 +68,16 @@ class AnalysisPhase(TACListener):
         self.generate_unused_label_warnings()
 
     def enterLabeledInstruction(self, ctx:TACParser.LabeledInstructionContext):
-        labels = ctx.ID()
-        label_location = ctx.start.line
-        for label in labels:
-            label_name = label.getText()
-            self.add_label_declaration(label_name, label_location)
-
         self.instructions.append(ctx.instruction())
+
+    def enterLabel(self, ctx):
+        name = ctx.ID().getText()
+        parent_type = ctx.parentCtx.getRuleIndex()
+        location = ctx.start.line - 1
+        if parent_type == TACParser.RULE_jump:
+            self.add_label_reference(name, location)
+        elif parent_type == TACParser.RULE_labeledInstruction:
+            self.add_label_declaration(name, location)
 
     def enterIdentifier(self, ctx: TACParser.IdentifierContext):
         name = ctx.ID().getText()
@@ -86,16 +89,14 @@ class AnalysisPhase(TACListener):
                 # it's a bit odd, so probably worth warning about.
                 warning_str = f"Variable referenced before assignment: {name}"
                 self.warning.append(warning_str)
-        if parent_type == TACParser.RULE_lhs:
+        elif parent_type == TACParser.RULE_lhs:
             self.variables.add(name)
-        elif parent_type == TACParser.RULE_jump:
-            location = ctx.start.line
-            self.add_label_reference(name, location)
 
 
 class Interpreter(TACVisitor):
-    def __init__(self, instructions):
+    def __init__(self, instructions, labels):
         self.instructions = instructions
+        self.labels = labels
         self.env = {}
         self.next_instruction = 0
 
@@ -104,7 +105,7 @@ class Interpreter(TACVisitor):
             instr = self.instructions[self.next_instruction]
             next_instruction = self.visit(instr)
             if next_instruction:
-                self.next_instruction += next_instruction
+                self.next_instruction = next_instruction
             else:
                 self.next_instruction += 1
 
@@ -112,7 +113,7 @@ class Interpreter(TACVisitor):
     def visitAssignment(self, ctx:TACParser.AssignmentContext):
         lhs = self.visit(ctx.lhs())
         rhs = self.visit(ctx.rhs())
-        self.env[lhs] = rhs
+        lhs(rhs)
 
     # Visit a parse tree produced by TACParser#ConditionalJump.
     def visitConditionalJump(self, ctx:TACParser.ConditionalJumpContext):
@@ -125,15 +126,18 @@ class Interpreter(TACVisitor):
     def visitUnconditionalJump(self, ctx:TACParser.UnconditionalJumpContext):
         return self.visit(ctx.jump())
 
-
     # Visit a parse tree produced by TACParser#jump.
     def visitJump(self, ctx:TACParser.JumpContext):
         return self.visit(ctx.label())
 
-
     # Visit a parse tree produced by TACParser#lhs.
     def visitLhs(self, ctx:TACParser.LhsContext):
-        return ctx.getText()
+        lhs = ctx.getText()
+
+        def variable(rhs):
+            self.env[lhs] = rhs
+
+        return variable
 
     # Visit a parse tree produced by TACParser#RhsBinop.
     def visitRhsBinop(self, ctx:TACParser.RhsBinopContext):
@@ -154,6 +158,12 @@ class Interpreter(TACVisitor):
         else:
             raise Exception(f"Unexpected binop: {text}")
 
+    def visitRelop(self, ctx:TACParser.RelopContext):
+        op = self.visit(ctx.reloperator())
+        addr1 = self.visit(ctx.address()[0])
+        addr2 = self.visit(ctx.address()[1])
+        return op(addr1, addr2)
+
     # Visit a parse tree produced by TACParser#reloperator.
     def visitReloperator(self, ctx:TACParser.ReloperatorContext):
         text = ctx.getText()
@@ -172,6 +182,11 @@ class Interpreter(TACVisitor):
         else:
             raise Exception(f"Unexpected relop: {text}")
 
+    def visitLabel(self, ctx:TACParser.LabelContext):
+        name = ctx.getText()
+        label_loc = self.labels.get(name).declaration_location
+        return label_loc
+
     # Visit a parse tree produced by TACParser#Identifier.
     def visitIdentifier(self, ctx:TACParser.IdentifierContext):
         name = ctx.getText()
@@ -184,6 +199,3 @@ class Interpreter(TACVisitor):
     # Visit a parse tree produced by TACParser#Integer.
     def visitInteger(self, ctx:TACParser.IntegerContext):
         return int(ctx.getText())
-
-
-
