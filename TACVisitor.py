@@ -54,8 +54,13 @@ class TACVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by TACParser#lhs.
-    def visitLhs(self, ctx:TACParser.LhsContext):
+    # Visit a parse tree produced by TACParser#LhsSimple.
+    def visitLhsSimple(self, ctx:TACParser.LhsSimpleContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by TACParser#LhsIndexed.
+    def visitLhsIndexed(self, ctx:TACParser.LhsIndexedContext):
         return self.visitChildren(ctx)
 
 
@@ -66,6 +71,21 @@ class TACVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by TACParser#RhsBinop.
     def visitRhsBinop(self, ctx:TACParser.RhsBinopContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by TACParser#RhsUnop.
+    def visitRhsUnop(self, ctx:TACParser.RhsUnopContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by TACParser#RhsIndexed.
+    def visitRhsIndexed(self, ctx:TACParser.RhsIndexedContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by TACParser#RhsAddressOf.
+    def visitRhsAddressOf(self, ctx:TACParser.RhsAddressOfContext):
         return self.visitChildren(ctx)
 
 
@@ -81,6 +101,11 @@ class TACVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by TACParser#reloperator.
     def visitReloperator(self, ctx:TACParser.ReloperatorContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by TACParser#unoperator.
+    def visitUnoperator(self, ctx:TACParser.UnoperatorContext):
         return self.visitChildren(ctx)
 
 

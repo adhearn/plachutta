@@ -89,12 +89,21 @@ class TACListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by TACParser#lhs.
-    def enterLhs(self, ctx:TACParser.LhsContext):
+    # Enter a parse tree produced by TACParser#LhsSimple.
+    def enterLhsSimple(self, ctx:TACParser.LhsSimpleContext):
         pass
 
-    # Exit a parse tree produced by TACParser#lhs.
-    def exitLhs(self, ctx:TACParser.LhsContext):
+    # Exit a parse tree produced by TACParser#LhsSimple.
+    def exitLhsSimple(self, ctx:TACParser.LhsSimpleContext):
+        pass
+
+
+    # Enter a parse tree produced by TACParser#LhsIndexed.
+    def enterLhsIndexed(self, ctx:TACParser.LhsIndexedContext):
+        pass
+
+    # Exit a parse tree produced by TACParser#LhsIndexed.
+    def exitLhsIndexed(self, ctx:TACParser.LhsIndexedContext):
         pass
 
 
@@ -113,6 +122,33 @@ class TACListener(ParseTreeListener):
 
     # Exit a parse tree produced by TACParser#RhsBinop.
     def exitRhsBinop(self, ctx:TACParser.RhsBinopContext):
+        pass
+
+
+    # Enter a parse tree produced by TACParser#RhsUnop.
+    def enterRhsUnop(self, ctx:TACParser.RhsUnopContext):
+        pass
+
+    # Exit a parse tree produced by TACParser#RhsUnop.
+    def exitRhsUnop(self, ctx:TACParser.RhsUnopContext):
+        pass
+
+
+    # Enter a parse tree produced by TACParser#RhsIndexed.
+    def enterRhsIndexed(self, ctx:TACParser.RhsIndexedContext):
+        pass
+
+    # Exit a parse tree produced by TACParser#RhsIndexed.
+    def exitRhsIndexed(self, ctx:TACParser.RhsIndexedContext):
+        pass
+
+
+    # Enter a parse tree produced by TACParser#RhsAddressOf.
+    def enterRhsAddressOf(self, ctx:TACParser.RhsAddressOfContext):
+        pass
+
+    # Exit a parse tree produced by TACParser#RhsAddressOf.
+    def exitRhsAddressOf(self, ctx:TACParser.RhsAddressOfContext):
         pass
 
 
@@ -140,6 +176,15 @@ class TACListener(ParseTreeListener):
 
     # Exit a parse tree produced by TACParser#reloperator.
     def exitReloperator(self, ctx:TACParser.ReloperatorContext):
+        pass
+
+
+    # Enter a parse tree produced by TACParser#unoperator.
+    def enterUnoperator(self, ctx:TACParser.UnoperatorContext):
+        pass
+
+    # Exit a parse tree produced by TACParser#unoperator.
+    def exitUnoperator(self, ctx:TACParser.UnoperatorContext):
         pass
 
 

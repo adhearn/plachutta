@@ -4,26 +4,8 @@ from TACLexer import TACLexer
 from TACParser import TACParser
 from interpreter import AnalysisPhase, Interpreter
 
+
 class TestInterpreter:
-    #
-    # def test_simple(self):
-    #     prog = """a = 1
-    #     b = 2
-    #     c = a + b
-    #     result = c
-    #     """
-    #     input_stream = InputStream(prog)
-    #     lexer = TACLexer(input_stream)
-    #     token_stream = CommonTokenStream(lexer)
-    #     parser = TACParser(token_stream)
-    #     tree = parser.tacFile()
-    #     walker = ParseTreeWalker()
-    #     analysis = AnalysisPhase()
-    #     walker.walk(analysis, tree)
-    #     interpreter = Interpreter(analysis.instructions, analysis.labels)
-    #     interpreter.eval()
-    #     result = interpreter.env["result"]
-    #     assert result == 3
 
     def _test_sample_file(self, filename, expected, result_var):
         cur_dir = os.path.dirname(__file__)
@@ -36,10 +18,29 @@ class TestInterpreter:
         walker = ParseTreeWalker()
         analysis = AnalysisPhase()
         walker.walk(analysis, tree)
-        interpreter = Interpreter(analysis.instructions, analysis.labels)
+        interpreter = Interpreter(analysis.instructions, analysis.symbol_table)
         interpreter.eval()
-        result = interpreter.env[result_var]
+        result = interpreter.memory.ref(interpreter.symbol_table.get(result_var).memory_location)
         assert result == expected
+
+    def test_simple(self):
+        prog = """a = 1
+        b = 2
+        c = a + b
+        result = c
+        """
+        input_stream = InputStream(prog)
+        lexer = TACLexer(input_stream)
+        token_stream = CommonTokenStream(lexer)
+        parser = TACParser(token_stream)
+        tree = parser.tacFile()
+        walker = ParseTreeWalker()
+        analysis = AnalysisPhase()
+        walker.walk(analysis, tree)
+        interpreter = Interpreter(analysis.instructions, analysis.symbol_table)
+        interpreter.eval()
+        result = interpreter.memory.ref(interpreter.symbol_table.get("result").memory_location)
+        assert result == 3
 
     def test_return1(self):
         self._test_sample_file("return1.tac", 1, "rdi")
@@ -58,3 +59,9 @@ class TestInterpreter:
 
     def test_fact5(self):
         self._test_sample_file("fact5.tac", 120, "rdi")
+
+    def test_memtest1(self):
+        self._test_sample_file("memtest1.tac", 8, "result")
+
+    def test_fib_memo(self):
+        self._test_sample_file("fib_memo.tac", 34, "result")

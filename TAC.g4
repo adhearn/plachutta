@@ -15,10 +15,15 @@ jump: 'jump' label ;
 
 label: ID ;
 
-lhs: address ;
+lhs: address # LhsSimple
+| address '[' address ']' # LhsIndexed
+;
 
 rhs: address # RhsAddress
 | address binoperator address # RhsBinop
+| unoperator address # RhsUnop
+| address '[' address ']' # RhsIndexed
+//| '&' ID # RhsAddressOf
 ;
 
 relop: address reloperator address ;
@@ -26,6 +31,8 @@ relop: address reloperator address ;
 binoperator: '*' | '+' | '-' ;
 
 reloperator: '==' | '!=' | '>' | '>=' | '<=' | '<' ;
+
+unoperator: 'memrequest' ;
 
 address: ID # Identifier
 | INT # Integer
