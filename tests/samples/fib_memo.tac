@@ -1,4 +1,4 @@
-n = 10
+main: n = 10
 fibs = memrequest n
 i = 0
 fib: if i >= n jump fibend
@@ -17,3 +17,4 @@ ifend: i = i + 1
 jump fib
 fibend: lastindex = n - 1
 result = fibs[lastindex]
+return result

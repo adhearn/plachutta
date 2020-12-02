@@ -1,1 +1,1 @@
-rdi = 1
+main: return 1

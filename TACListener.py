@@ -62,12 +62,48 @@ class TACListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by TACParser#InstructionReturn.
+    def enterInstructionReturn(self, ctx:TACParser.InstructionReturnContext):
+        pass
+
+    # Exit a parse tree produced by TACParser#InstructionReturn.
+    def exitInstructionReturn(self, ctx:TACParser.InstructionReturnContext):
+        pass
+
+
+    # Enter a parse tree produced by TACParser#InstructionParam.
+    def enterInstructionParam(self, ctx:TACParser.InstructionParamContext):
+        pass
+
+    # Exit a parse tree produced by TACParser#InstructionParam.
+    def exitInstructionParam(self, ctx:TACParser.InstructionParamContext):
+        pass
+
+
     # Enter a parse tree produced by TACParser#UnconditionalJump.
     def enterUnconditionalJump(self, ctx:TACParser.UnconditionalJumpContext):
         pass
 
     # Exit a parse tree produced by TACParser#UnconditionalJump.
     def exitUnconditionalJump(self, ctx:TACParser.UnconditionalJumpContext):
+        pass
+
+
+    # Enter a parse tree produced by TACParser#GlobalInstruction.
+    def enterGlobalInstruction(self, ctx:TACParser.GlobalInstructionContext):
+        pass
+
+    # Exit a parse tree produced by TACParser#GlobalInstruction.
+    def exitGlobalInstruction(self, ctx:TACParser.GlobalInstructionContext):
+        pass
+
+
+    # Enter a parse tree produced by TACParser#globalDeclaration.
+    def enterGlobalDeclaration(self, ctx:TACParser.GlobalDeclarationContext):
+        pass
+
+    # Exit a parse tree produced by TACParser#globalDeclaration.
+    def exitGlobalDeclaration(self, ctx:TACParser.GlobalDeclarationContext):
         pass
 
 
@@ -107,6 +143,15 @@ class TACListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by TACParser#RhsCall.
+    def enterRhsCall(self, ctx:TACParser.RhsCallContext):
+        pass
+
+    # Exit a parse tree produced by TACParser#RhsCall.
+    def exitRhsCall(self, ctx:TACParser.RhsCallContext):
+        pass
+
+
     # Enter a parse tree produced by TACParser#RhsAddress.
     def enterRhsAddress(self, ctx:TACParser.RhsAddressContext):
         pass
@@ -140,15 +185,6 @@ class TACListener(ParseTreeListener):
 
     # Exit a parse tree produced by TACParser#RhsIndexed.
     def exitRhsIndexed(self, ctx:TACParser.RhsIndexedContext):
-        pass
-
-
-    # Enter a parse tree produced by TACParser#RhsAddressOf.
-    def enterRhsAddressOf(self, ctx:TACParser.RhsAddressOfContext):
-        pass
-
-    # Exit a parse tree produced by TACParser#RhsAddressOf.
-    def exitRhsAddressOf(self, ctx:TACParser.RhsAddressOfContext):
         pass
 
 
@@ -188,21 +224,21 @@ class TACListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by TACParser#Identifier.
-    def enterIdentifier(self, ctx:TACParser.IdentifierContext):
+    # Enter a parse tree produced by TACParser#AddressIdentifier.
+    def enterAddressIdentifier(self, ctx:TACParser.AddressIdentifierContext):
         pass
 
-    # Exit a parse tree produced by TACParser#Identifier.
-    def exitIdentifier(self, ctx:TACParser.IdentifierContext):
+    # Exit a parse tree produced by TACParser#AddressIdentifier.
+    def exitAddressIdentifier(self, ctx:TACParser.AddressIdentifierContext):
         pass
 
 
-    # Enter a parse tree produced by TACParser#Integer.
-    def enterInteger(self, ctx:TACParser.IntegerContext):
+    # Enter a parse tree produced by TACParser#AddressInteger.
+    def enterAddressInteger(self, ctx:TACParser.AddressIntegerContext):
         pass
 
-    # Exit a parse tree produced by TACParser#Integer.
-    def exitInteger(self, ctx:TACParser.IntegerContext):
+    # Exit a parse tree produced by TACParser#AddressInteger.
+    def exitAddressInteger(self, ctx:TACParser.AddressIntegerContext):
         pass
 
 

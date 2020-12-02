@@ -8,8 +8,13 @@ labeledInstruction: (label ':')* instruction ;
 instruction: '<NO OP>' # NoOp
 | lhs '=' rhs # Assignment
 | 'if' relop jump # ConditionalJump
+| 'return' address # InstructionReturn
+| 'param' address # InstructionParam
 | jump # UnconditionalJump
+| globalDeclaration # GlobalInstruction
 ;
+
+globalDeclaration: 'global' ID ;
 
 jump: 'jump' label ;
 
@@ -19,7 +24,8 @@ lhs: address # LhsSimple
 | address '[' address ']' # LhsIndexed
 ;
 
-rhs: address # RhsAddress
+rhs: 'call' label address # RhsCall
+| address # RhsAddress
 | address binoperator address # RhsBinop
 | unoperator address # RhsUnop
 | address '[' address ']' # RhsIndexed
@@ -32,10 +38,12 @@ binoperator: '*' | '+' | '-' ;
 
 reloperator: '==' | '!=' | '>' | '>=' | '<=' | '<' ;
 
-unoperator: 'memrequest' ;
+unoperator: 'memrequest'
+| 'param'
+;
 
-address: ID # Identifier
-| INT # Integer
+address: ID # AddressIdentifier
+| INT # AddressInteger
 ;
 
 ID: [a-z][a-zA-Z0-9]* ;

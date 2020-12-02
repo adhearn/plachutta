@@ -39,8 +39,28 @@ class TACVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by TACParser#InstructionReturn.
+    def visitInstructionReturn(self, ctx:TACParser.InstructionReturnContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by TACParser#InstructionParam.
+    def visitInstructionParam(self, ctx:TACParser.InstructionParamContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by TACParser#UnconditionalJump.
     def visitUnconditionalJump(self, ctx:TACParser.UnconditionalJumpContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by TACParser#GlobalInstruction.
+    def visitGlobalInstruction(self, ctx:TACParser.GlobalInstructionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by TACParser#globalDeclaration.
+    def visitGlobalDeclaration(self, ctx:TACParser.GlobalDeclarationContext):
         return self.visitChildren(ctx)
 
 
@@ -64,6 +84,11 @@ class TACVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by TACParser#RhsCall.
+    def visitRhsCall(self, ctx:TACParser.RhsCallContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by TACParser#RhsAddress.
     def visitRhsAddress(self, ctx:TACParser.RhsAddressContext):
         return self.visitChildren(ctx)
@@ -81,11 +106,6 @@ class TACVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by TACParser#RhsIndexed.
     def visitRhsIndexed(self, ctx:TACParser.RhsIndexedContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by TACParser#RhsAddressOf.
-    def visitRhsAddressOf(self, ctx:TACParser.RhsAddressOfContext):
         return self.visitChildren(ctx)
 
 
@@ -109,13 +129,13 @@ class TACVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by TACParser#Identifier.
-    def visitIdentifier(self, ctx:TACParser.IdentifierContext):
+    # Visit a parse tree produced by TACParser#AddressIdentifier.
+    def visitAddressIdentifier(self, ctx:TACParser.AddressIdentifierContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by TACParser#Integer.
-    def visitInteger(self, ctx:TACParser.IntegerContext):
+    # Visit a parse tree produced by TACParser#AddressInteger.
+    def visitAddressInteger(self, ctx:TACParser.AddressIntegerContext):
         return self.visitChildren(ctx)
 
 

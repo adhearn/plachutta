@@ -53,4 +53,3 @@ class TestAnalysis:
         walker.walk(analysis, tree)
         assert len(analysis.warnings) == 1
         assert len(analysis.errors) == 0
-

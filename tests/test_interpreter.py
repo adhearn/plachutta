@@ -19,15 +19,15 @@ class TestInterpreter:
         analysis = AnalysisPhase()
         walker.walk(analysis, tree)
         interpreter = Interpreter(analysis.instructions, analysis.symbol_table)
-        interpreter.eval()
-        result = interpreter.memory.ref(interpreter.symbol_table.get(result_var).memory_location)
+        result = interpreter.eval()
         assert result == expected
 
     def test_simple(self):
-        prog = """a = 1
+        prog = """main: a = 1
         b = 2
         c = a + b
         result = c
+        return result
         """
         input_stream = InputStream(prog)
         lexer = TACLexer(input_stream)
@@ -38,8 +38,7 @@ class TestInterpreter:
         analysis = AnalysisPhase()
         walker.walk(analysis, tree)
         interpreter = Interpreter(analysis.instructions, analysis.symbol_table)
-        interpreter.eval()
-        result = interpreter.memory.ref(interpreter.symbol_table.get("result").memory_location)
+        result = interpreter.eval()
         assert result == 3
 
     def test_return1(self):
@@ -65,3 +64,12 @@ class TestInterpreter:
 
     def test_fib_memo(self):
         self._test_sample_file("fib_memo.tac", 34, "result")
+
+    def test_simple_call(self):
+        self._test_sample_file("simple_call.tac", 1, "result")
+
+    def test_add5_function(self):
+        self._test_sample_file("add5_function.tac", 23, "result")
+
+    def test_fact5_function(self):
+        self._test_sample_file("fact5_function.tac", 120, "result")
