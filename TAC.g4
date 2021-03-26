@@ -11,14 +11,11 @@ instruction: '<NO OP>' # NoOp
 | 'return' address # InstructionReturn
 | 'param' address # InstructionParam
 | jump # UnconditionalJump
-| globalDeclaration # GlobalInstruction
 ;
-
-globalDeclaration: 'global' ID ;
 
 jump: 'jump' label ;
 
-label: ID ;
+label: LABEL ;
 
 lhs: address # LhsSimple
 | address '[' address ']' # LhsIndexed
@@ -42,10 +39,14 @@ unoperator: 'memrequest'
 | 'param'
 ;
 
-address: ID # AddressIdentifier
+address: GLOBAL # AddressGlobal
+| LOCAL # AddressLocal
 | INT # AddressInteger
 ;
 
+LOCAL: '%'ID ;
+LABEL: '@'ID ;
+GLOBAL: '$'ID ;
 ID: [a-z][a-zA-Z0-9]* ;
 INT: [0-9]+ ;
 

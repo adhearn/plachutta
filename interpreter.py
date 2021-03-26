@@ -16,7 +16,6 @@ class Symbol:
         self.symbol_type = self.TYPE
         self.is_global = False
 
-
     def add_reference(self, location):
         self.reference_locations.add(location)
 
@@ -97,7 +96,6 @@ class StackFrame:
         return self.memory.ref(loc)
 
     def set_local_variable(self, variable_name, value):
-        print(f"Setting local variable {variable_name} = {value}")
         loc = self._variable_locations.get(variable_name)
 
         if loc is None:
@@ -119,6 +117,7 @@ class AnalysisPhase(TACListener):
 
     def add_label_declaration(self, name, location):
         symbol = self.symbol_table.get(name)
+        print(f"Adding new label {name}")
         if symbol:
             if symbol.declaration_location:
                 error_msg = f"Duplicate label: {name}"
@@ -149,7 +148,7 @@ class AnalysisPhase(TACListener):
 
     def generate_unused_label_warnings(self):
         for label in self.symbol_table.labels():
-            if not label.reference_locations:
+            if not label.reference_locations and label.name != "@main":
                 warning_str = f"Unused label: {label.name}"
                 self.warnings.append(warning_str)
 
@@ -159,15 +158,20 @@ class AnalysisPhase(TACListener):
                 error_str = f"Label used but not defined: {label.name}"
                 self.errors.append(error_str)
 
+    def generate_missing_main_error(self):
+        if not self.symbol_table.get("@main"):
+            self.errors.append("No main label found")
+
     def exitTacFile(self, ctx:TACParser.TacFileContext):
         self.generate_undeclared_label_errors()
         self.generate_unused_label_warnings()
+        self.generate_missing_main_error()
 
     def enterLabeledInstruction(self, ctx:TACParser.LabeledInstructionContext):
         self.instructions.append(ctx.instruction())
 
     def enterLabel(self, ctx):
-        name = ctx.ID().getText()
+        name = ctx.LABEL().getText()
         parent_type = ctx.parentCtx.getRuleIndex()
         location = ctx.start.line - 1
         if parent_type == TACParser.RULE_jump:
@@ -175,15 +179,15 @@ class AnalysisPhase(TACListener):
         elif parent_type == TACParser.RULE_labeledInstruction:
             self.add_label_declaration(name, location)
 
-    def enterGlobalDeclaration(self, ctx: TACParser.GlobalInstructionContext):
-        name = ctx.ID().getText()
+    def enterAddressLocal(self, ctx: TACParser.AddressLocalContext):
+        name = ctx.LOCAL().getText()
+        location = ctx.start.line - 1
+        self.variable_reference(name, location, global_declaration=False)
+
+    def enterAddressGlobal(self, ctx: TACParser.AddressGlobalContext):
+        name = ctx.GLOBAL().getText()
         location = ctx.start.line - 1
         self.variable_reference(name, location, global_declaration=True)
-
-    def enterAddressIdentifier(self, ctx: TACParser.AddressIdentifierContext):
-        name = ctx.ID().getText()
-        location = ctx.start.line - 1
-        self.variable_reference(name, location)
 
 
 class Interpreter(TACVisitor):
@@ -202,7 +206,7 @@ class Interpreter(TACVisitor):
         self.initialize_stack()
 
     def initialize_stack(self):
-        main_label = self.symbol_table.get("main")
+        main_label = self.symbol_table.get("@main")
         assert main_label.symbol_type == Label.TYPE
         self.instruction_pointer = main_label.declaration_location
         initial_frame = StackFrame(self.MAIN_EXIT_ADDRESS, [])
@@ -224,12 +228,12 @@ class Interpreter(TACVisitor):
     def eval(self):
         while self.instruction_pointer < len(self.instructions):
             instr = self.instructions[self.instruction_pointer]
-            instruction_pointer = self.visit(instr)
-            if instruction_pointer:
-                if instruction_pointer == self.MAIN_EXIT_ADDRESS:
+            jump_pointer = self.visit(instr)
+            if jump_pointer:
+                if jump_pointer == self.MAIN_EXIT_ADDRESS:
                     return self.return_value
                 else:
-                    self.instruction_pointer = instruction_pointer
+                    self.instruction_pointer = jump_pointer
             else:
                 self.instruction_pointer += 1
 
@@ -286,7 +290,7 @@ class Interpreter(TACVisitor):
 
     # Visit a parse tree produced by TACParser#LhsSimple.
     def visitLhsSimple(self, ctx: TACParser.LhsSimpleContext):
-        lhs_name = ctx.getText()
+        lhs_name = ctx.address().getText()
         symbol = self.symbol_table.get(lhs_name)
         if symbol.is_global:
             memloc = symbol.memory_location
@@ -379,15 +383,15 @@ class Interpreter(TACVisitor):
         label_loc = self.symbol_table.get(name).declaration_location
         return label_loc
 
-    # Visit a parse tree produced by TACParser#Identifier.
-    def visitAddressIdentifier(self, ctx:TACParser.AddressIdentifierContext):
+    def visitAddressLocal(self, ctx: TACParser.AddressLocalContext):
+        name = ctx.getText()
+        return self.current_frame.get_local_variable(name)
+
+    def visitAddressGlobal(self, ctx: TACParser.AddressGlobalContext):
         name = ctx.getText()
         symbol = self.symbol_table.get(name)
-        if symbol.is_global:
-            memloc = symbol.memory_location
-            return self.memory.ref(memloc)
-        else:
-            return self.current_frame.get_local_variable(name)
+        memloc = symbol.memory_location
+        return self.memory.ref(memloc)
 
     # Visit a parse tree produced by TACParser#Integer.
     def visitAddressInteger(self, ctx:TACParser.AddressIntegerContext):

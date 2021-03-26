@@ -21,12 +21,12 @@ class TestAnalysis:
             walker = ParseTreeWalker()
             analysis = AnalysisPhase()
             walker.walk(analysis, tree)
-            assert not analysis.errors
+            assert not analysis.errors, f"{filename}: {analysis.errors}"
 
     def test_jump_to_invalid_label(self):
-        prog = """l1: t1 = 4
-        t2 = t1 + 3
-        jump l2
+        prog = """@main: %t1 = 4
+        %t2 = %t1 + 3
+        jump @l2
         """
         input_stream = InputStream(prog)
         lexer = TACLexer(input_stream)
@@ -40,8 +40,8 @@ class TestAnalysis:
         assert len(analysis.errors) == 1
 
     def test_unused_label_warning(self):
-        prog = """l1: t1 = 4
-        t2 = t1 + 3
+        prog = """@main: %t1 = 4
+        @l1: %t2 = %t1 + 3
         """
         input_stream = InputStream(prog)
         lexer = TACLexer(input_stream)

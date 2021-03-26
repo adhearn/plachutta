@@ -89,24 +89,6 @@ class TACListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by TACParser#GlobalInstruction.
-    def enterGlobalInstruction(self, ctx:TACParser.GlobalInstructionContext):
-        pass
-
-    # Exit a parse tree produced by TACParser#GlobalInstruction.
-    def exitGlobalInstruction(self, ctx:TACParser.GlobalInstructionContext):
-        pass
-
-
-    # Enter a parse tree produced by TACParser#globalDeclaration.
-    def enterGlobalDeclaration(self, ctx:TACParser.GlobalDeclarationContext):
-        pass
-
-    # Exit a parse tree produced by TACParser#globalDeclaration.
-    def exitGlobalDeclaration(self, ctx:TACParser.GlobalDeclarationContext):
-        pass
-
-
     # Enter a parse tree produced by TACParser#jump.
     def enterJump(self, ctx:TACParser.JumpContext):
         pass
@@ -224,12 +206,21 @@ class TACListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by TACParser#AddressIdentifier.
-    def enterAddressIdentifier(self, ctx:TACParser.AddressIdentifierContext):
+    # Enter a parse tree produced by TACParser#AddressGlobal.
+    def enterAddressGlobal(self, ctx:TACParser.AddressGlobalContext):
         pass
 
-    # Exit a parse tree produced by TACParser#AddressIdentifier.
-    def exitAddressIdentifier(self, ctx:TACParser.AddressIdentifierContext):
+    # Exit a parse tree produced by TACParser#AddressGlobal.
+    def exitAddressGlobal(self, ctx:TACParser.AddressGlobalContext):
+        pass
+
+
+    # Enter a parse tree produced by TACParser#AddressLocal.
+    def enterAddressLocal(self, ctx:TACParser.AddressLocalContext):
+        pass
+
+    # Exit a parse tree produced by TACParser#AddressLocal.
+    def exitAddressLocal(self, ctx:TACParser.AddressLocalContext):
         pass
 
 

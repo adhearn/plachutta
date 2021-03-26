@@ -54,16 +54,6 @@ class TACVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by TACParser#GlobalInstruction.
-    def visitGlobalInstruction(self, ctx:TACParser.GlobalInstructionContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by TACParser#globalDeclaration.
-    def visitGlobalDeclaration(self, ctx:TACParser.GlobalDeclarationContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by TACParser#jump.
     def visitJump(self, ctx:TACParser.JumpContext):
         return self.visitChildren(ctx)
@@ -129,8 +119,13 @@ class TACVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by TACParser#AddressIdentifier.
-    def visitAddressIdentifier(self, ctx:TACParser.AddressIdentifierContext):
+    # Visit a parse tree produced by TACParser#AddressGlobal.
+    def visitAddressGlobal(self, ctx:TACParser.AddressGlobalContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by TACParser#AddressLocal.
+    def visitAddressLocal(self, ctx:TACParser.AddressLocalContext):
         return self.visitChildren(ctx)
 
 

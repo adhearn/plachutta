@@ -8,8 +8,8 @@ from interpreter import AnalysisPhase, SymbolTable
 class TestSymbolTable:
 
     def test_no_globals(self):
-        prog = """l1: t1 = 4
-        t2 = t1 + 3
+        prog = """@l1: %t1 = 4
+        %t2 = %t1 + 3
         """
         input_stream = InputStream(prog)
         lexer = TACLexer(input_stream)
@@ -24,9 +24,9 @@ class TestSymbolTable:
         assert len(st.variables()) == 2
 
     def test_single_global(self):
-        prog = """global t1
-        l1: t1 = 4
-        t2 = t1 + 3
+        prog = """
+        @l1: $t1 = 4
+        %t2 = $t1 + 3
         """
         input_stream = InputStream(prog)
         lexer = TACLexer(input_stream)
@@ -41,10 +41,8 @@ class TestSymbolTable:
         assert len(st.variables()) == 2
 
     def test_multiple_globals(self):
-        prog = """global t1
-        global t2
-        l1: t1 = 4
-        t2 = t1 + 3
+        prog = """@l1: $t1 = 4
+        $t2 = $t1 + 3
         """
         input_stream = InputStream(prog)
         lexer = TACLexer(input_stream)
